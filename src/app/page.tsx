@@ -1,3 +1,9 @@
+import { Heading } from '@/components/Heading'
+
 export default function Home() {
-  return <h1>Hello world</h1>
+  return (
+    <Heading clasName="text-2xl" as="h1">
+      Hello world
+    </Heading>
+  )
 }
