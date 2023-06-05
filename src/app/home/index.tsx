@@ -4,6 +4,7 @@ import Image from 'next/image'
 
 import previewImage from '@/assets/app-preview.png'
 import clsx from 'clsx'
+import { ClaimUsernameForm } from '@/app/home/components/ClaimUsernameForm'
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
           Conecte seu calendário e permita que as pessoas marquem agendamentos
           no seu tempo livre.
         </Text>
+
+        <ClaimUsernameForm />
       </div>
 
       <div className="overflow-hidden p-8 max-sm:hidden">
