@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+* {
+  @apply p-0
+  m-0
+  box-border;
+}
+
+body {
+  @apply bg-gray-900 
+  text-gray-100
+  antialiased;
+}
