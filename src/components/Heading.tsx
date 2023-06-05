@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 interface HeadingProps {
   children: string
-  className: string
+  className?: string
   as?: 'h1' | 'h2'
 }
 

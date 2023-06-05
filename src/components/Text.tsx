@@ -11,7 +11,7 @@ export function Text({
   as = 'p',
   className = 'text-base',
 }: TextProps) {
-  const classNames = 'font-default leading-relaxed m-0 text-gray-100'
+  const classNames = 'font-default leading-relaxed m-0 text-gray-200'
 
   const element =
     as === 'p' ? (
