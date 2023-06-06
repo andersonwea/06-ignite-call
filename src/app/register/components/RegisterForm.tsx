@@ -11,6 +11,7 @@ import ArrowRight from '@/assets/ArrowRight'
 import { FormError } from './FormError'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
+import { api } from '@/lib/axios'
 
 const registerFormSchema = z.object({
   username: z
@@ -47,8 +48,15 @@ export function RegisterForm() {
     }
   }, [username, setValue])
 
-  function handleRegisterUser(data: RegisterFormData) {
-    console.log(data)
+  async function handleRegisterUser(data: RegisterFormData) {
+    try {
+      await api.post('/users', {
+        name: data.name,
+        username: data.username,
+      })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (
