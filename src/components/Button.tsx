@@ -22,7 +22,7 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classNames =
-    'min-w-[120px] cursor-pointer rounded-md text-center font-default text-sm font-medium flex items-center justify-center gap-2 px-4 disabled:cursor-not-allowed border-none bg-transparent'
+    'min-w-[120px] cursor-pointer rounded-md text-center font-default text-sm font-medium flex items-center justify-center gap-2 px-4 disabled:cursor-not-allowed border-none'
 
   return (
     <button

@@ -5,7 +5,7 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 import { Box } from '@/components/Box'
-import ArrowRight from '@/components/ArrowRight'
+import ArrowRight from '@/assets/ArrowRight'
 import { Button } from '@/components/Button'
 import { TextInput } from '@/components/TextInput'
 import { Text } from '@/components/Text'
