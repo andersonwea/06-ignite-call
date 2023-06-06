@@ -1,11 +1,14 @@
-import { InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, forwardRef, Ref } from 'react'
 import clsx from 'clsx'
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   prefix?: string
 }
 
-export function TextInput({ prefix, ...props }: TextInputProps) {
+export const TextInput = forwardRef(function TextInput(
+  { prefix, ...props }: TextInputProps,
+  ref: Ref<HTMLInputElement>,
+) {
   return (
     <div
       className={clsx(
@@ -22,6 +25,7 @@ export function TextInput({ prefix, ...props }: TextInputProps) {
         </span>
       )}
       <input
+        ref={ref}
         className={clsx(
           'b-0 w-full bg-transparent font-default text-sm font-normal text-white',
           'focus:outline-none',
@@ -32,6 +36,4 @@ export function TextInput({ prefix, ...props }: TextInputProps) {
       />
     </div>
   )
-}
-
-TextInput.displayName = 'TextInput'
+})
