@@ -2,17 +2,16 @@ import clsx from 'clsx'
 import { Text } from './Text'
 
 interface MultiStepProps {
-  size: number
   currentStep?: number
 }
 
-export function MultiStep({ size, currentStep = 1 }: MultiStepProps) {
-  const step = `Passo ${currentStep} de ${size}`
+export function MultiStep({ currentStep = 1 }: MultiStepProps) {
+  const size = 4
 
   return (
     <div>
-      <Text className="text-xs">{step}</Text>
-      <div className={clsx('mt-1 grid gap-2', `grid-cols-${size}`)}>
+      <Text className="text-xs">{`Passo ${currentStep} de ${size}`}</Text>
+      <div className={`mt-1 grid grid-cols-4 gap-2`}>
         {Array.from({ length: size }, (_, i) => i + 1).map((step) => {
           return (
             <div
