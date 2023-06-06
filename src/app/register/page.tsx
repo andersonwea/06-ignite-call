@@ -1,10 +1,8 @@
 import { Box } from '@/components/Box'
-import { Button } from '@/components/Button'
 import { Heading } from '@/components/Heading'
 import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
-import { TextInput } from '@/components/TextInput'
-import ArrowRight from '@/assets/ArrowRight'
+import { RegisterForm } from './components/RegisterForm'
 
 export default function Register() {
   return (
@@ -22,19 +20,7 @@ export default function Register() {
       </header>
 
       <Box className="mt-6 flex flex-col gap-4">
-        <form className="flex flex-col gap-4">
-          <label className="space-y-2">
-            <Text className="text-sm">Nome de usuário</Text>
-            <TextInput prefix="ignite.com/" placeholder="seu-usuario" />
-          </label>
-
-          <label className="space-y-2">
-            <Text className="text-sm">Nome completo</Text>
-            <TextInput placeholder="seu nome" />
-          </label>
-
-          <Button icon={<ArrowRight />}>Próximo passo</Button>
-        </form>
+        <RegisterForm />
       </Box>
     </div>
   )
