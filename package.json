@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
+    "@prisma/client": "^4.15.0",
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "20.2.5",
     "@types/react": "18.2.8",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.3",
-    "prettier-plugin-tailwindcss": "^0.3.0"
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "prisma": "^4.15.0"
   }
 }

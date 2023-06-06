@@ -74,7 +74,9 @@ export function RegisterForm() {
         {errors.name && <FormError>{errors.name.message}</FormError>}
       </label>
 
-      <Button icon={<ArrowRight />}>Próximo passo</Button>
+      <Button icon={<ArrowRight />} disabled={isSubmitting}>
+        Próximo passo
+      </Button>
     </form>
   )
 }
