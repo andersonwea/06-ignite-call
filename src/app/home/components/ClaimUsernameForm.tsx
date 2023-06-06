@@ -9,6 +9,7 @@ import ArrowRight from '@/assets/ArrowRight'
 import { Button } from '@/components/Button'
 import { TextInput } from '@/components/TextInput'
 import { Text } from '@/components/Text'
+import { useRouter } from 'next/navigation'
 
 const claimUsernameFormSchema = z.object({
   username: z
@@ -31,8 +32,12 @@ export function ClaimUsernameForm() {
     resolver: zodResolver(claimUsernameFormSchema),
   })
 
-  function handleClaimUsername(data: ClaimUsernameFormData) {
-    console.log(data)
+  const router = useRouter()
+
+  async function handleClaimUsername(data: ClaimUsernameFormData) {
+    const { username } = data
+
+    await router.push(`/register?username=${username}`)
   }
 
   return (

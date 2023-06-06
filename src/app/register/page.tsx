@@ -16,7 +16,7 @@ export default function Register() {
           editar essas informações depois.
         </Text>
 
-        <MultiStep size={4} currentStep={1} />
+        <MultiStep currentStep={1} />
       </header>
 
       <Box className="mt-6 flex flex-col gap-4">

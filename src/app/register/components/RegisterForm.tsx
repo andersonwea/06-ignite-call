@@ -9,6 +9,8 @@ import { Text } from '@/components/Text'
 import { TextInput } from '@/components/TextInput'
 import ArrowRight from '@/assets/ArrowRight'
 import { FormError } from './FormError'
+import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 const registerFormSchema = z.object({
   username: z
@@ -29,10 +31,21 @@ export function RegisterForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<RegisterFormData>({
     resolver: zodResolver(registerFormSchema),
   })
+
+  const searchParams = useSearchParams()
+
+  const username = searchParams.get('username')
+
+  useEffect(() => {
+    if (username) {
+      setValue('username', username)
+    }
+  }, [username, setValue])
 
   function handleRegisterUser(data: RegisterFormData) {
     console.log(data)
