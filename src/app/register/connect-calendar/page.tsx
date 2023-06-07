@@ -6,6 +6,8 @@ import { Text } from '@/components/Text'
 import clsx from 'clsx'
 import ArrowRight from '@/assets/ArrowRight'
 
+import { SignInButton } from './components/SignInButton'
+
 export default function ConnectCalendar() {
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
@@ -30,9 +32,8 @@ export default function ConnectCalendar() {
             )}
           >
             <Text>Google Calendar</Text>
-            <Button secondary icon={<ArrowRight />} size="sm">
-              Conectar
-            </Button>
+
+            <SignInButton />
           </div>
 
           <Button primary icon={<ArrowRight />}>
