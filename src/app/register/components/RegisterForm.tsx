@@ -9,7 +9,7 @@ import { Text } from '@/components/Text'
 import { TextInput } from '@/components/TextInput'
 import ArrowRight from '@/assets/ArrowRight'
 import { FormError } from './FormError'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { api } from '@/lib/axios'
 import { AxiosError } from 'axios'
@@ -39,6 +39,8 @@ export function RegisterForm() {
     resolver: zodResolver(registerFormSchema),
   })
 
+  const router = useRouter()
+
   const searchParams = useSearchParams()
 
   const username = searchParams.get('username')
@@ -55,6 +57,8 @@ export function RegisterForm() {
         name: data.name,
         username: data.username,
       })
+
+      router.push('/register/connect-calendar')
     } catch (err) {
       if (err instanceof AxiosError && err?.response?.data?.message) {
         alert(err.response.data.message)
@@ -87,7 +91,7 @@ export function RegisterForm() {
         {errors.name && <FormError>{errors.name.message}</FormError>}
       </label>
 
-      <Button icon={<ArrowRight />} disabled={isSubmitting}>
+      <Button primary icon={<ArrowRight />} disabled={isSubmitting}>
         Próximo passo
       </Button>
     </form>

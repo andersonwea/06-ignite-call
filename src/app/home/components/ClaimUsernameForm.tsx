@@ -52,7 +52,7 @@ export function ClaimUsernameForm() {
             placeholder="seu-usuario"
             {...register('username')}
           />
-          <Button size="sm" type="submit" icon={<ArrowRight />}>
+          <Button size="md" primary icon={<ArrowRight />}>
             Reservar usuário
           </Button>
         </form>

@@ -33,8 +33,7 @@ export async function POST(request: NextRequest) {
     {
       status: 201,
       headers: {
-        'Set-Cookie': `@ignitecall:userId=${user.id};
-         Path=/; max-age=${cookieExpiresInSeconds};`,
+        'Set-Cookie': `@ignitecall:userId=${user.id}; Path=/; max-age=${cookieExpiresInSeconds};`,
       },
     },
   )
