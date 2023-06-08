@@ -10,12 +10,10 @@ import Check from '@/assets/Check'
 import { SignInButton } from './components/SignInButton'
 import { AuthError } from './components/AuthError'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/app/api/auth/[...nextauth]/auth'
+import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
 
 export default async function ConnectCalendar() {
-  const session = await getServerSession(authOptions)
-
-  console.log(session)
+  const session = await getServerSession(buildNextAuthOptions())
 
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
