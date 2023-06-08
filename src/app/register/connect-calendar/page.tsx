@@ -15,6 +15,8 @@ import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
 export default async function ConnectCalendar() {
   const session = await getServerSession(buildNextAuthOptions())
 
+  console.log(session)
+
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
       <header className="px-6">
