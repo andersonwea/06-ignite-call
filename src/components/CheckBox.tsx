@@ -9,7 +9,7 @@ export function Checkbox(props: CheckboxProps) {
   return (
     <CheckboxRadix.Root {...props} className="checkbox">
       <CheckboxRadix.Indicator asChild className="h-4 w-4 text-white ">
-        <Check width="bold" />
+        <Check />
       </CheckboxRadix.Indicator>
     </CheckboxRadix.Root>
   )
