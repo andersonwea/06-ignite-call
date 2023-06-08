@@ -10,7 +10,7 @@ import Check from '@/assets/Check'
 import { SignInButton } from './components/SignInButton'
 import { AuthError } from './components/AuthError'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { authOptions } from '@/app/api/auth/[...nextauth]/auth'
 
 export default async function ConnectCalendar() {
   const session = await getServerSession(authOptions)
