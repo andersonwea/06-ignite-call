@@ -5,10 +5,18 @@ import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
 import clsx from 'clsx'
 import ArrowRight from '@/assets/ArrowRight'
+import Check from '@/assets/Check'
 
 import { SignInButton } from './components/SignInButton'
+import { AuthError } from './components/AuthError'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '@/lib/auth'
 
-export default function ConnectCalendar() {
+export default async function ConnectCalendar() {
+  const session = await getServerSession(authOptions)
+
+  console.log(session)
+
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
       <header className="px-6">
@@ -33,10 +41,17 @@ export default function ConnectCalendar() {
           >
             <Text>Google Calendar</Text>
 
-            <SignInButton />
+            {session ? (
+              <Button size="sm" primary disabled icon={<Check />}>
+                Conectado
+              </Button>
+            ) : (
+              <SignInButton />
+            )}
           </div>
+          <AuthError />
 
-          <Button primary icon={<ArrowRight />}>
+          <Button primary icon={<ArrowRight />} disabled={!session}>
             Próximo passo
           </Button>
         </>
