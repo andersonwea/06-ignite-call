@@ -4,7 +4,7 @@ interface TextProps {
   children: string | number | undefined
   className?: string
   as?: 'p' | 'span'
-  color?: 'primary' | 'secondary'
+  color?: 'primary' | 'secondary' | 'error'
 }
 
 export function Text({
@@ -21,6 +21,7 @@ export function Text({
         className={clsx(classNames, className, {
           'text-gray-100': color === 'primary',
           'text-gray-200': color === 'secondary',
+          'text-red-400': color === 'error',
         })}
       >
         {children}

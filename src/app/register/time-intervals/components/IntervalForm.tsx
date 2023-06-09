@@ -7,8 +7,26 @@ import { Checkbox } from '@/components/CheckBox'
 import * as z from 'zod'
 import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { getWeekDays } from '@/utils/get-week-days'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-const timeIntervalsFormSchema = z.object({})
+const timeIntervalsFormSchema = z.object({
+  intervals: z
+    .array(
+      z.object({
+        weekDay: z.number().min(0).max(6),
+        enabled: z.boolean(),
+        startTime: z.string(),
+        endTime: z.string(),
+      }),
+    )
+    .length(7)
+    .transform((intervals) => intervals.filter((interval) => interval.enabled))
+    .refine((intervals) => intervals.length > 0, {
+      message: 'Você precisa selecionar pelo menos um dia da semana',
+    }),
+})
+
+type TimeIntervalsFormData = z.infer<typeof timeIntervalsFormSchema>
 
 export function IntervalForm() {
   const {
@@ -18,6 +36,7 @@ export function IntervalForm() {
     watch,
     formState: { isSubmitting, errors },
   } = useForm({
+    resolver: zodResolver(timeIntervalsFormSchema),
     defaultValues: {
       intervals: [
         { weekDay: 0, enabled: false, startTime: '08:00', endTime: '18:00' },
@@ -38,7 +57,9 @@ export function IntervalForm() {
 
   const intervals = watch('intervals')
 
-  async function handleSetTimeIntervals() {}
+  async function handleSetTimeIntervals(data: TimeIntervalsFormData) {
+    console.log(data)
+  }
 
   const weekDays = getWeekDays()
 
@@ -92,7 +113,14 @@ export function IntervalForm() {
           )
         })}
       </div>
-      <Button primary className="mt-4">
+
+      {errors.intervals && (
+        <Text className="mb-4 text-sm" color="error">
+          {errors.intervals.message}
+        </Text>
+      )}
+
+      <Button primary className="mt-4" disabled={isSubmitting}>
         Próximo passo
       </Button>
     </form>

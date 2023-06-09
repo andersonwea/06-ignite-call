@@ -8,7 +8,6 @@ import { Button } from '@/components/Button'
 import { Text } from '@/components/Text'
 import { TextInput } from '@/components/TextInput'
 import ArrowRight from '@/assets/ArrowRight'
-import { FormError } from './FormError'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { api } from '@/lib/axios'
@@ -81,14 +80,22 @@ export function RegisterForm() {
           {...register('username')}
         />
 
-        {errors.username && <FormError>{errors.username.message}</FormError>}
+        {errors.username && (
+          <Text className="text-sm" color="error">
+            {errors.username.message}
+          </Text>
+        )}
       </label>
 
       <label className="space-y-2">
         <Text className="text-sm">Nome completo</Text>
         <TextInput placeholder="seu nome" {...register('name')} />
 
-        {errors.name && <FormError>{errors.name.message}</FormError>}
+        {errors.name && (
+          <Text className="text-sm" color="error">
+            {errors.name.message}
+          </Text>
+        )}
       </label>
 
       <Button primary icon={<ArrowRight />} disabled={isSubmitting}>
