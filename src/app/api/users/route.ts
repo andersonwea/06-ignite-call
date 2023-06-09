@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
   const cookieExpiresInSeconds = 60 * 60 * 24 * 7 // 7 days
 
   return NextResponse.json(
-    { user },
+    {},
     {
       status: 201,
       headers: {

@@ -81,9 +81,9 @@ export function IntervalForm() {
   const intervals = watch('intervals')
 
   async function handleSetTimeIntervals(data: any) {
-    const formData = data as TimeIntervalsFormOutput
+    const { intervals } = data as TimeIntervalsFormOutput
 
-    await api.post('/users/time-intervals', { formData })
+    await api.post('/users/time-intervals', { intervals })
   }
 
   const weekDays = getWeekDays()
