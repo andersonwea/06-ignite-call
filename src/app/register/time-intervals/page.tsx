@@ -2,7 +2,7 @@ import { Box } from '@/components/Box'
 import { Heading } from '@/components/Heading'
 import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
-import { IntervalItem } from './components/IntervalItem'
+import { IntervalForm } from './components/IntervalForm'
 // import clsx from 'clsx'
 
 // import { getServerSession } from 'next-auth'
@@ -17,7 +17,7 @@ export default async function ConnectCalendar() {
         <Heading className="text-2xl leading-relaxed">
           Defina sua disponibilidade
         </Heading>
-        <Text className="mb-6">
+        <Text className="mb-6" color="secondary">
           Defina o intervalo de horários que você está disponível em cada dia da
           semana.
         </Text>
@@ -26,9 +26,7 @@ export default async function ConnectCalendar() {
       </header>
 
       <Box className="mt-6 flex flex-col">
-        <form className="mb-4 rounded-md border border-solid border-gray-600">
-          <IntervalItem />
-        </form>
+        <IntervalForm />
       </Box>
     </div>
   )
