@@ -3,14 +3,8 @@ import { Heading } from '@/components/Heading'
 import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
 import { IntervalForm } from './components/IntervalForm'
-// import clsx from 'clsx'
-
-// import { getServerSession } from 'next-auth'
-// import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
 
 export default async function ConnectCalendar() {
-  // const session = await getServerSession(buildNextAuthOptions())
-
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
       <header className="px-6">
