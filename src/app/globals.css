@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 input[type="time"] {
-  @apply  text-black p-0 border-none invert brightness-150
+  @apply  text-white p-0 border-none
 }
 
 * {

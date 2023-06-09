@@ -5,7 +5,7 @@ import { Text } from '@/components/Text'
 import { TextInput } from '@/components/TextInput'
 import { Checkbox } from '@/components/CheckBox'
 import * as z from 'zod'
-import { useFieldArray, useForm } from 'react-hook-form'
+import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { getWeekDays } from '@/utils/get-week-days'
 
 const timeIntervalsFormSchema = z.object({})
@@ -15,6 +15,7 @@ export function IntervalForm() {
     register,
     handleSubmit,
     control,
+    watch,
     formState: { isSubmitting, errors },
   } = useForm({
     defaultValues: {
@@ -35,6 +36,8 @@ export function IntervalForm() {
     control,
   })
 
+  const intervals = watch('intervals')
+
   async function handleSetTimeIntervals() {}
 
   const weekDays = getWeekDays()
@@ -52,18 +55,33 @@ export function IntervalForm() {
               key={field.id}
             >
               <div className="flex items-center gap-3">
-                <Checkbox />
+                <Controller
+                  name={`intervals.${index}.enabled`}
+                  control={control}
+                  render={({ field }) => {
+                    return (
+                      <Checkbox
+                        onCheckedChange={(checked) => {
+                          field.onChange(checked === true)
+                        }}
+                        checked={field.value}
+                      />
+                    )
+                  }}
+                />
                 <Text>{weekDays[field.weekDay]}</Text>
               </div>
 
               <div className="flex h-11 items-center gap-2">
                 <TextInput
+                  disabled={intervals[index].enabled === false}
                   type="time"
                   step={60}
                   height="sm"
                   {...register(`intervals.${index}.startTime`)}
                 />
                 <TextInput
+                  disabled={intervals[index].enabled === false}
                   type="time"
                   step={60}
                   height="sm"

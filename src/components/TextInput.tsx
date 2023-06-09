@@ -18,6 +18,7 @@ export const TextInput = forwardRef(function TextInput(
       className={clsx(classnames, {
         'px-4 py-3': height === 'md',
         'px-3 py-2': height === 'sm',
+        'opacity-50': props.disabled,
       })}
     >
       {!!prefix && (
