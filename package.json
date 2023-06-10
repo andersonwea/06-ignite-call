@@ -11,6 +11,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@prisma/client": "^4.15.0",
+    "@radix-ui/react-avatar": "^1.0.3",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "20.2.5",

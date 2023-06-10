@@ -1,21 +1,14 @@
 import { Box } from '@/components/Box'
-import { Button } from '@/components/Button'
 import { Heading } from '@/components/Heading'
 import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
-import clsx from 'clsx'
-import ArrowRight from '@/assets/ArrowRight'
-import Check from '@/assets/Check'
 
-import { SignInButton } from './components/SignInButton'
-import { AuthError } from './components/AuthError'
 import { getServerSession } from 'next-auth'
 import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
+import { ConnectProvider } from './components/ConnectProvider'
 
 export default async function ConnectCalendar() {
   const session = await getServerSession(buildNextAuthOptions())
-
-  console.log(session)
 
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">
@@ -33,27 +26,7 @@ export default async function ConnectCalendar() {
 
       <Box className="mt-6 flex flex-col gap-4">
         <>
-          <div
-            className={clsx(
-              'mb-2 flex items-center justify-between rounded-md',
-              'border border-solid border-gray-600 px-6 py-4',
-            )}
-          >
-            <Text>Google Calendar</Text>
-
-            {session ? (
-              <Button size="sm" primary disabled icon={<Check />}>
-                Conectado
-              </Button>
-            ) : (
-              <SignInButton />
-            )}
-          </div>
-          <AuthError />
-
-          <Button primary icon={<ArrowRight />} disabled={!session}>
-            Próximo passo
-          </Button>
+          <ConnectProvider session={session} />
         </>
       </Box>
     </div>
