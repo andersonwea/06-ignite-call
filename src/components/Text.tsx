@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 interface TextProps {
-  children: string | number | undefined
+  children: string | number | null | undefined
   className?: string
   as?: 'p' | 'span'
   color?: 'primary' | 'secondary' | 'error'
