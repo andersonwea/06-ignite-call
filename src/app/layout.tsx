@@ -2,7 +2,7 @@ import { ReactNode } from 'react'
 import './globals.css'
 import { Roboto } from 'next/font/google'
 import { Session } from 'next-auth'
-import { GoogleProvider } from './providers'
+import { GoogleProvider, QueryProvider } from './providers'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -25,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={roboto.variable}>
-        <GoogleProvider session={session}>{children}</GoogleProvider>
+        <QueryProvider>
+          <GoogleProvider session={session}>{children}</GoogleProvider>
+        </QueryProvider>
       </body>
     </html>
   )
