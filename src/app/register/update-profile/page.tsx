@@ -7,6 +7,10 @@ import { getServerSession } from 'next-auth'
 import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
 import { Avatar } from '@/components/Avatar'
 
+export const metadata = {
+  title: 'Atualize seu perfil | Ignite Call',
+}
+
 export default async function Register() {
   const session = await getServerSession(buildNextAuthOptions())
 

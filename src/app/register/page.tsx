@@ -4,6 +4,10 @@ import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
 import { RegisterForm } from './components/RegisterForm'
 
+export const metadata = {
+  title: 'Crie uma conta | Ignite Call',
+}
+
 export default function Register() {
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">

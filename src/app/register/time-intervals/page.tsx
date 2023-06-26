@@ -4,6 +4,10 @@ import { MultiStep } from '@/components/MultiStep'
 import { Text } from '@/components/Text'
 import { IntervalForm } from './components/IntervalForm'
 
+export const metadata = {
+  title: 'Selecione sua disponibilidade | Ignite Call',
+}
+
 export default async function ConnectCalendar() {
   return (
     <div className="mx-auto mb-4 mt-20 max-w-[572px] px-4">

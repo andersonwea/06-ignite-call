@@ -7,6 +7,10 @@ import { getServerSession } from 'next-auth'
 import { buildNextAuthOptions } from '@/app/api/auth/[...nextauth]/auth'
 import { ConnectProvider } from './components/ConnectProvider'
 
+export const metadata = {
+  title: 'Conecte sua agenda do Google | Ignite Call',
+}
+
 export default async function ConnectCalendar() {
   const session = await getServerSession(buildNextAuthOptions())
 

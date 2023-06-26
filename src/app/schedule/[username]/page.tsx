@@ -26,6 +26,14 @@ export async function generateStaticParams({ params }: ScheduleProps) {
   }))
 }
 
+export async function generateMetadata({ params }: ScheduleProps) {
+  const { username } = params
+
+  return {
+    title: `Agendar com ${username} | Ignite Call`,
+  }
+}
+
 export default async function Schedule({ params }: ScheduleProps) {
   const { username } = params
 
