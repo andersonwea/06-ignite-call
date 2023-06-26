@@ -19,6 +19,7 @@ export function ScheduleForm({ username }: ScheduleFormProps) {
   if (selectedDateTime) {
     return (
       <ConfirmStep
+        username={username}
         schedulingDate={selectedDateTime}
         onCancelConfirmation={handleClearSelectedDateTime}
       />
