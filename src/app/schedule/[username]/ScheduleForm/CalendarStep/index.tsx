@@ -11,6 +11,7 @@ import { useState } from 'react'
 
 interface CalendarStepProps {
   username: string
+  onSelectDateTime: (date: Date) => void
 }
 
 interface Availability {
@@ -18,7 +19,10 @@ interface Availability {
   availableTimes: number[]
 }
 
-export function CalendarStep({ username }: CalendarStepProps) {
+export function CalendarStep({
+  username,
+  onSelectDateTime,
+}: CalendarStepProps) {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
 
   const isDateSelected = !!selectedDate
@@ -48,6 +52,15 @@ export function CalendarStep({ username }: CalendarStepProps) {
     },
   )
 
+  function handleSelectTime(hour: number) {
+    const dateWithTime = dayjs(selectedDate)
+      .set('hour', hour)
+      .startOf('hour')
+      .toDate()
+
+    onSelectDateTime(dateWithTime)
+  }
+
   return (
     <Box
       className={clsx('relative mx-auto mb-0 mt-6 grid max-w-full p-0', {
@@ -74,6 +87,7 @@ export function CalendarStep({ username }: CalendarStepProps) {
                 return (
                   <TimePickerItem
                     key={hour}
+                    onClick={() => handleSelectTime(hour)}
                     disabled={!availability.availableTimes?.includes(hour)}
                   >
                     {String(hour).padStart(2, '0')}:00h

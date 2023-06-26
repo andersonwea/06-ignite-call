@@ -10,6 +10,7 @@ import { Button } from '@/components/Button'
 import * as z from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import dayjs from 'dayjs'
 
 const confirmFormSchema = z.object({
   name: z.string().min(3, 'O nome precisar ter no mínimo 3 caracteres'),
@@ -20,7 +21,15 @@ const confirmFormSchema = z.object({
 
 interface confirmFormData extends z.infer<typeof confirmFormSchema> {}
 
-export function ConfirmStep() {
+interface ConfirmStepProps {
+  schedulingDate: Date | null
+  onCancelConfirmation: () => void
+}
+
+export function ConfirmStep({
+  schedulingDate,
+  onCancelConfirmation,
+}: ConfirmStepProps) {
   const {
     handleSubmit,
     register,
@@ -33,6 +42,9 @@ export function ConfirmStep() {
     console.log(data)
   }
 
+  const describedDate = dayjs(schedulingDate).format('DD[ de ]MMMM[ de ]YYYY')
+  const describedTime = dayjs(schedulingDate).format('HH:mm[h]')
+
   return (
     <Box className="mx-auto mb-0 mt-6 max-w-[540px]">
       <form
@@ -42,11 +54,11 @@ export function ConfirmStep() {
         <header className="mt-2 flex items-center gap-4 border-b border-solid border-gray-600 pb-6">
           <h2 className="flex items-center gap-2 font-default leading-relaxed text-gray-100">
             <CalendarBlank size={20} color="#A9A9B2" />
-            22 de semtembro de 2022
+            {describedDate}
           </h2>
           <h2 className="flex items-center gap-2 font-default leading-relaxed text-gray-100">
             <Clock size={20} color="#A9A9B2" />
-            18:00h
+            {describedTime}
           </h2>
         </header>
 
@@ -86,7 +98,7 @@ export function ConfirmStep() {
         </label>
 
         <div className="mt-2 flex justify-end gap-2">
-          <Button tertiary type="button">
+          <Button tertiary type="button" onClick={() => onCancelConfirmation()}>
             Cancelar
           </Button>
           <Button primary type="submit" disabled={isSubmitting}>
