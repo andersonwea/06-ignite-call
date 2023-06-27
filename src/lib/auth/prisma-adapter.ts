@@ -1,11 +1,12 @@
 import { Adapter } from 'next-auth/adapters'
 import { prisma } from '../prisma'
-import { NextApiRequest, NextApiResponse } from 'next'
 import { cookies } from 'next/headers'
+import { NextRequest, NextResponse } from 'next/server'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 export function PrismaAdapter(
-  req?: NextApiRequest,
-  res?: NextApiResponse,
+  req?: NextRequest | NextApiRequest,
+  res?: NextResponse | NextApiResponse,
 ): Adapter {
   return {
     async createUser(user) {
